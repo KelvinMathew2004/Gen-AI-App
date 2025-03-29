@@ -14,30 +14,21 @@ public class DrawCompletions extends AbstractOpenAIRequest {
 
     @Override
     protected JSONObject constructRequestBody() throws JSONException {
-
         JSONObject body = new JSONObject();
         body.put("model", model);
-
-        JSONArray messages = new JSONArray();
-        messages.put(new JSONObject().put("role", "user").put("content", userPrompt));
-
-        body.put("messages", messages);
-        body.put("max_tokens", 200);
-
+        body.put("prompt", userPrompt);
+        body.put("n", 1);
+        body.put("size", "1024x1024");
         return body;
-
     }
 
-    // @Override
-    // protected String parseResponse(String jsonResponse) {
-    //     try {
-    //         JSONObject json = new JSONObject(jsonResponse);
-    //         return json.getJSONArray("choices")
-    //                 .getJSONObject(0)
-    //                 .getJSONObject("message")
-    //                 .getString("content");
-    //     } catch (JSONException e) {
-    //         return ("Unable to parse OpenAI JSON response " + e.getMessage());
-    //     }
-    // }
+    @Override
+    protected String parseResponse(String jsonResponse) {
+        try {
+            JSONObject json = new JSONObject(jsonResponse);
+            return json.getJSONArray("data").getJSONObject(0).getString("url");
+        } catch (JSONException e) {
+            return "Unable to parse OpenAI JSON response: " + e.getMessage();
+        }
+    }
 }
