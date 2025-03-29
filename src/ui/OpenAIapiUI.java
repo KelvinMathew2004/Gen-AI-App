@@ -36,7 +36,10 @@ public class OpenAIapiUI extends JFrame {
         tabbedPane.addTab("Chat", chatTab.createTab());
 
         // Add "Draw" tab
-        DrawTab drawTab = new DrawTab();
+        DrawTab drawTab = new DrawTab(
+            chatComponents.getModelField(),
+            chatComponents.getUserPromptArea(),
+            apiKey);
         tabbedPane.addTab("Draw", drawTab.createTab());
 
         // Add the tabbed pane to the frame
