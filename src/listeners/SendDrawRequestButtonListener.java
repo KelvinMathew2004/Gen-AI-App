@@ -4,23 +4,24 @@ import ui.panels.ImagePanel;
 import apiOperations.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+
+import javax.swing.JComboBox;
 import javax.swing.JTextArea;
-import javax.swing.JTextField;
 
 public class SendDrawRequestButtonListener implements ActionListener {
-    private JTextField modelField;
+    private JComboBox<String> modelDropdown;
     private JTextArea userPromptArea;
     private String apiKey;
 
-    public SendDrawRequestButtonListener(JTextField modelField, JTextArea userPromptArea, String apiKey) {
-        this.modelField = modelField;
+    public SendDrawRequestButtonListener(JComboBox<String> modelDropdown, JTextArea userPromptArea, String apiKey) {
+        this.modelDropdown = modelDropdown;
         this.userPromptArea = userPromptArea;
         this.apiKey = apiKey;
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        String gptModel = modelField.getText();
+        String gptModel = (String) modelDropdown.getSelectedItem();
         String userPrompt = userPromptArea.getText();
 
         DrawCompletions drawCompletions = new DrawCompletions(apiKey, gptModel, userPrompt);

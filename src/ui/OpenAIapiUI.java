@@ -41,7 +41,7 @@ public class OpenAIapiUI extends JFrame {
 
         // Add "Draw" tab
         DrawTab drawTab = new DrawTab(
-            drawComponents.getModelField(),
+            drawComponents.getModelDropdown(),
             drawComponents.getUserPromptArea(),
             drawComponents.getSizeField(),
             drawComponents.getNetIdField(),

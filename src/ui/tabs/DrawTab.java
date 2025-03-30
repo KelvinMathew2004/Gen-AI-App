@@ -7,14 +7,14 @@ import ui.panels.ImagePanel;
 import ui.panels.DrawContentPanel;
 
 public class DrawTab extends AbstractCreateTab {
-    private final JTextField modelField;
+    private final JComboBox<String> modelDropdown;
     private final JTextArea userPromptArea;
     private final JTextField sizeField;
     private final JTextField netIdField;
     private final String apiKey;
 
-    public DrawTab(JTextField modelField, JTextArea userPromptArea, JTextField sizeField, JTextField netIdField, String apiKey) {
-        this.modelField = modelField;
+    public DrawTab(JComboBox<String> modelDropdown, JTextArea userPromptArea, JTextField sizeField, JTextField netIdField, String apiKey) {
+        this.modelDropdown = modelDropdown;
         this.userPromptArea = userPromptArea;
         this.apiKey = apiKey;
         this.sizeField = sizeField;
@@ -32,7 +32,7 @@ public class DrawTab extends AbstractCreateTab {
         drawPanel.add(imagePanel, BorderLayout.NORTH);
 
         // Add main content panel
-        drawPanel.add(new DrawContentPanel(modelField, userPromptArea, sizeField, netIdField, apiKey), BorderLayout.CENTER);
+        drawPanel.add(new DrawContentPanel(modelDropdown, userPromptArea, sizeField, netIdField, apiKey), BorderLayout.CENTER);
 
         return drawPanel;
     }
