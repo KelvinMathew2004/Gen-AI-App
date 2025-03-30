@@ -6,6 +6,7 @@ import apiOperations.ApiKeyLoader;
 import ui.tabs.ChatTab;
 import ui.tabs.ChatTabComponents;
 import ui.tabs.DrawTab;
+import ui.tabs.DrawTabComponents;
 
 public class OpenAIapiUI extends JFrame {
     private String apiKey;
@@ -25,6 +26,9 @@ public class OpenAIapiUI extends JFrame {
         // Create ChatTab components
         ChatTabComponents chatComponents = new ChatTabComponents();
 
+        // Create DrawTab components
+        DrawTabComponents drawComponents = new DrawTabComponents();
+
         // Add "Chat" tab
         ChatTab chatTab = new ChatTab(
                 chatComponents.getModelField(),
@@ -37,8 +41,8 @@ public class OpenAIapiUI extends JFrame {
 
         // Add "Draw" tab
         DrawTab drawTab = new DrawTab(
-            chatComponents.getModelField(),
-            chatComponents.getUserPromptArea(),
+            drawComponents.getModelField(),
+            drawComponents.getUserPromptArea(),
             apiKey);
         tabbedPane.addTab("Draw", drawTab.createTab());
 
