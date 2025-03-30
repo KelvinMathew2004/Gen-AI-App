@@ -1,17 +1,19 @@
 package listeners;
+import ui.panels.ImagePanel;
 
 import apiOperations.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
+import java.net.URL;
 
 public class SendDrawRequestButtonListener implements ActionListener {
     private JTextField modelField;
-    private JTextArea userPromptArea, responseArea;
+    private JTextArea userPromptArea;
     private String apiKey;
 
-    public SendChatButtonListener(JTextField modelField, JTextArea userPromptArea, String apiKey) {
+    public SendDrawButtonListener(JTextField modelField, JTextArea userPromptArea, String apiKey) {
         this.modelField = modelField;
         this.userPromptArea = userPromptArea;
         this.apiKey = apiKey;
@@ -24,10 +26,9 @@ public class SendDrawRequestButtonListener implements ActionListener {
 
         DrawCompletions drawCompletions = new DrawCompletions(apiKey, gptModel, userPrompt);
         try {
-            String responseContent = drawCompletions.execute("https://api.openai.com/v1/chat/completions");
-            responseArea.setText(responseContent);
+            String imageURL = drawCompletions.execute("https://api.openai.com/v1/chat/completions");
+            ImagePanel.setImage(imageURL);
         } catch (Exception ex) {
-            responseArea.setText("OpenAI chat response error: " + ex.getMessage());
             ex.printStackTrace();
         }
     }

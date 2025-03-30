@@ -20,7 +20,7 @@ public class DrawContentPanel extends AbstractContentPanel {
         addLabelAndTextComponent("User Prompt:", userPromptArea, gbc, row++);
 
         // Create a send-chat listener
-        SendChatButtonListener listener = new SendChatButtonListener(
+        SendDrawButtonListener listener = new SendDrawButtonListener(
                 modelField, userPromptArea, apiKey);
 
         addButton("Send to OpenAI", listener, gbc, row++);

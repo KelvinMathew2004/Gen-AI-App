@@ -5,14 +5,39 @@ import javax.swing.*;
 import java.net.URL;
 
 public class ImagePanel extends JPanel {
+    private static URL imageUrl;
+
+    static {
+        // Load image from resources directory
+        imageUrl = ImagePanel.class.getClassLoader().getResource("resources/TeslaBugsInClassRoom.png");
+        if (imageUrl == null) {
+            throw new IllegalArgumentException("Image not found in resources");
+        }
+    }
+
+    public static void setImage(String newImageUrl) {
+        try {
+            imageUrl = new URL(newImageUrl);
+            SwingUtilities.invokeLater(() -> {
+                for (Window window : Window.getWindows()) {
+                    for (Component comp : window.getComponents()) {
+                        if (comp instanceof ImagePanel) {
+                            comp.repaint(); // Repaint all instances of ImagePanel
+                        }
+                    }
+                }
+            });
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
         try {
-            // Load image from resources directory
-            URL imageUrl = getClass().getClassLoader().getResource("resources/TeslaBugsInClassRoom.png");
             if (imageUrl == null) {
-                throw new IllegalArgumentException("Image not found in resources");
+                return;
             }
             Image image = new ImageIcon(imageUrl).getImage();
 
