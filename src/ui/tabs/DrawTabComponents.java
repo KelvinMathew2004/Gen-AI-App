@@ -6,6 +6,8 @@ import utilities.TextAreaMaker;
 public class DrawTabComponents {
     private JTextField modelField;
     private JTextArea userPromptArea;
+    private JTextField sizeField;
+    private JTextField netIdField;
 
     public DrawTabComponents() {
         // Initialize shared components
@@ -13,8 +15,10 @@ public class DrawTabComponents {
         userPromptArea = TextAreaMaker.createWrappedTextArea(
                 "Create a stunning mystical mountain landscape with tall snowy peaks and dense forests in the epic style of Bob Ross.",
                 3, 30);
-        // responseArea = TextAreaMaker.createWrappedTextArea("", 8, 40);
-        // responseArea.setEditable(false);
+        sizeField = new JTextField("1024x1024", 20);
+        netIdField = new JTextField("dha25", 20);
+        sizeField.setEditable(false);
+        netIdField.setEditable(false);
     }
 
     public JTextField getModelField() {
@@ -23,6 +27,14 @@ public class DrawTabComponents {
 
     public JTextArea getUserPromptArea() {
         return userPromptArea;
+    }
+
+    public JTextField getSizeField() {
+        return sizeField;
+    }
+
+    public JTextField getNetIdField() {
+        return netIdField;
     }
 
 }

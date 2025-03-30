@@ -9,12 +9,16 @@ import ui.panels.DrawContentPanel;
 public class DrawTab extends AbstractCreateTab {
     private final JTextField modelField;
     private final JTextArea userPromptArea;
+    private final JTextField sizeField;
+    private final JTextField netIdField;
     private final String apiKey;
 
-    public DrawTab(JTextField modelField, JTextArea userPromptArea, String apiKey) {
+    public DrawTab(JTextField modelField, JTextArea userPromptArea, JTextField sizeField, JTextField netIdField, String apiKey) {
         this.modelField = modelField;
         this.userPromptArea = userPromptArea;
         this.apiKey = apiKey;
+        this.sizeField = sizeField;
+        this.netIdField = netIdField;
     }
 
     @Override
@@ -28,7 +32,7 @@ public class DrawTab extends AbstractCreateTab {
         drawPanel.add(imagePanel, BorderLayout.NORTH);
 
         // Add main content panel
-        drawPanel.add(new DrawContentPanel(modelField, userPromptArea, apiKey), BorderLayout.CENTER);
+        drawPanel.add(new DrawContentPanel(modelField, userPromptArea, sizeField, netIdField, apiKey), BorderLayout.CENTER);
 
         return drawPanel;
     }

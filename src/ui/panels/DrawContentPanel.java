@@ -8,6 +8,8 @@ public class DrawContentPanel extends AbstractContentPanel {
     public DrawContentPanel(
             JTextField modelField,
             JTextArea userPromptArea,
+            JTextField size,
+            JTextField netId,
             String apiKey) {
 
         GridBagConstraints gbc = new GridBagConstraints();
@@ -18,6 +20,8 @@ public class DrawContentPanel extends AbstractContentPanel {
 
         addLabelAndTextComponent("Model:", modelField, gbc, row++);
         addLabelAndTextComponent("User Prompt:", userPromptArea, gbc, row++);
+        addLabelAndTextComponent("Size:", size, gbc, row++);
+        addLabelAndTextComponent("NetID:", netId, gbc, row++);
 
         // Create a send-chat listener
         SendDrawRequestButtonListener listener = new SendDrawRequestButtonListener(
