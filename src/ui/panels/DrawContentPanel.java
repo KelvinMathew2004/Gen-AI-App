@@ -2,7 +2,7 @@ package ui.panels;
 
 import java.awt.*;
 import javax.swing.*;
-import listeners.SendChatButtonListener;
+import listeners.SendDrawRequestButtonListener;
 
 public class DrawContentPanel extends AbstractContentPanel {
     public DrawContentPanel(
@@ -20,7 +20,7 @@ public class DrawContentPanel extends AbstractContentPanel {
         addLabelAndTextComponent("User Prompt:", userPromptArea, gbc, row++);
 
         // Create a send-chat listener
-        SendDrawButtonListener listener = new SendDrawButtonListener(
+        SendDrawRequestButtonListener listener = new SendDrawRequestButtonListener(
                 modelField, userPromptArea, apiKey);
 
         addButton("Send to OpenAI", listener, gbc, row++);

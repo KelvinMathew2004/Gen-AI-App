@@ -13,7 +13,7 @@ public class SendDrawRequestButtonListener implements ActionListener {
     private JTextArea userPromptArea;
     private String apiKey;
 
-    public SendDrawButtonListener(JTextField modelField, JTextArea userPromptArea, String apiKey) {
+    public SendDrawRequestButtonListener(JTextField modelField, JTextArea userPromptArea, String apiKey) {
         this.modelField = modelField;
         this.userPromptArea = userPromptArea;
         this.apiKey = apiKey;
@@ -26,7 +26,7 @@ public class SendDrawRequestButtonListener implements ActionListener {
 
         DrawCompletions drawCompletions = new DrawCompletions(apiKey, gptModel, userPrompt);
         try {
-            String imageURL = drawCompletions.execute("https://api.openai.com/v1/chat/completions");
+            String imageURL = drawCompletions.execute("https://api.openai.com/v1/images/generations");
             ImagePanel.setImage(imageURL);
         } catch (Exception ex) {
             ex.printStackTrace();
