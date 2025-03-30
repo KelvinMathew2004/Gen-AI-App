@@ -32,7 +32,12 @@ public class DrawTab extends AbstractCreateTab {
         drawPanel.add(imagePanel, BorderLayout.NORTH);
 
         // Add main content panel
-        drawPanel.add(new DrawContentPanel(modelDropdown, userPromptArea, sizeField, netIdField, apiKey), BorderLayout.CENTER);
+        drawPanel.add(new DrawContentPanel(modelDropdown, userPromptArea, sizeField, 
+            netIdField, apiKey), BorderLayout.CENTER);
+
+        // Revalidate and repaint the parent panel to ensure layout is updated when components change
+        drawPanel.revalidate();
+        drawPanel.repaint();
 
         return drawPanel;
     }
