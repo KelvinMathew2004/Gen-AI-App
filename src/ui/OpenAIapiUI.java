@@ -38,6 +38,8 @@ public class OpenAIapiUI extends JFrame {
                 chatComponents.getResponseArea(),
                 apiKey);
         JScrollPane chatScrollPane = new JScrollPane(chatTab.createTab());
+        chatScrollPane.getVerticalScrollBar().setUnitIncrement(16);
+        chatScrollPane.getHorizontalScrollBar().setUnitIncrement(16);
         tabbedPane.addTab("Chat", chatScrollPane);
 
         // Add "Draw" tab
@@ -48,6 +50,8 @@ public class OpenAIapiUI extends JFrame {
             drawComponents.getNetIdField(),
             apiKey);
         JScrollPane drawScrollPane = new JScrollPane(drawTab.createTab());
+        drawScrollPane.getVerticalScrollBar().setUnitIncrement(16);
+        drawScrollPane.getHorizontalScrollBar().setUnitIncrement(16);
         tabbedPane.addTab("Draw", drawScrollPane);
 
         // Add the tabbed pane to the frame
