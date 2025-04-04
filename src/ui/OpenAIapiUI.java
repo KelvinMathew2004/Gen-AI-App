@@ -16,7 +16,7 @@ public class OpenAIapiUI extends JFrame {
         apiKey = ApiKeyLoader.loadApiKey();
 
         // Set up UI
-        setTitle("OpenAI Chat Example");
+        setTitle("OpenAI Generations");
         setSize(800, 1200);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
@@ -37,7 +37,10 @@ public class OpenAIapiUI extends JFrame {
                 chatComponents.getUserPromptArea(),
                 chatComponents.getResponseArea(),
                 apiKey);
-        tabbedPane.addTab("Chat", chatTab.createTab());
+        JScrollPane chatScrollPane = new JScrollPane(chatTab.createTab());
+        chatScrollPane.getVerticalScrollBar().setUnitIncrement(16);
+        chatScrollPane.getHorizontalScrollBar().setUnitIncrement(16);
+        tabbedPane.addTab("Chat", chatScrollPane);
 
         // Add "Draw" tab
         DrawTab drawTab = new DrawTab(
@@ -46,12 +49,16 @@ public class OpenAIapiUI extends JFrame {
             drawComponents.getSizeField(),
             drawComponents.getNetIdField(),
             apiKey);
-        tabbedPane.addTab("Draw", drawTab.createTab());
+        JScrollPane drawScrollPane = new JScrollPane(drawTab.createTab());
+        drawScrollPane.getVerticalScrollBar().setUnitIncrement(16);
+        drawScrollPane.getHorizontalScrollBar().setUnitIncrement(16);
+        tabbedPane.addTab("Draw", drawScrollPane);
 
         // Add the tabbed pane to the frame
         add(tabbedPane);
 
         setVisible(true);
+        setLocationRelativeTo(null);
     }
 
     public static void main(String[] args) {

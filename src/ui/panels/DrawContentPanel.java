@@ -6,6 +6,7 @@ import listeners.SendDrawRequestButtonListener;
 
 public class DrawContentPanel extends AbstractContentPanel {
     public DrawContentPanel(
+            ImagePanel imagePanel,
             JComboBox<String> modelDropdown,
             JTextArea userPromptArea,
             JTextField size,
@@ -25,7 +26,7 @@ public class DrawContentPanel extends AbstractContentPanel {
 
         // Create a send-chat listener
         SendDrawRequestButtonListener listener = new SendDrawRequestButtonListener(
-            modelDropdown, userPromptArea, apiKey);
+            imagePanel, modelDropdown, userPromptArea, apiKey);
 
         addButton("Send to OpenAI", listener, gbc, row++);
     }
