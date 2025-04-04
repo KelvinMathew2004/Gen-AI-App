@@ -26,13 +26,13 @@ public class DrawTab extends AbstractCreateTab {
         JPanel drawPanel = new JPanel(new BorderLayout());
 
         // Add image panel at the top
-        JPanel imagePanel = new ImagePanel();
+        ImagePanel imagePanel = new ImagePanel();
 
         imagePanel.setPreferredSize(new Dimension(400, 380));
         drawPanel.add(imagePanel, BorderLayout.NORTH);
 
         // Add main content panel
-        drawPanel.add(new DrawContentPanel(modelDropdown, userPromptArea, sizeField, 
+        drawPanel.add(new DrawContentPanel(imagePanel, modelDropdown, userPromptArea, sizeField, 
             netIdField, apiKey), BorderLayout.CENTER);
 
         // Revalidate and repaint the parent panel to ensure layout is updated when components change
@@ -41,4 +41,5 @@ public class DrawTab extends AbstractCreateTab {
 
         return drawPanel;
     }
+
 }

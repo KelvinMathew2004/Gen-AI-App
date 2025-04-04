@@ -16,7 +16,7 @@ public class OpenAIapiUI extends JFrame {
         apiKey = ApiKeyLoader.loadApiKey();
 
         // Set up UI
-        setTitle("OpenAI Chat Example");
+        setTitle("OpenAI Generations");
         setSize(800, 1200);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
@@ -58,6 +58,7 @@ public class OpenAIapiUI extends JFrame {
         add(tabbedPane);
 
         setVisible(true);
+        setLocationRelativeTo(null);
     }
 
     public static void main(String[] args) {

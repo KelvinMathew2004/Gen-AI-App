@@ -5,9 +5,9 @@ import javax.swing.*;
 import java.net.URL;
 
 public class ImagePanel extends JPanel {
-    private static URL imageUrl;
+    private URL imageUrl;
 
-    static {
+    public ImagePanel() {
         // Load image from resources directory
         imageUrl = ImagePanel.class.getClassLoader().getResource("resources/TeslaBugsInClassRoom.png");
         if (imageUrl == null) {
@@ -15,24 +15,12 @@ public class ImagePanel extends JPanel {
         }
     }
 
-    public static void setImage(String newImageUrl) {
+    public void setImage(String newImageUrl) {
         try {
             imageUrl = new URL(newImageUrl);
-            SwingUtilities.invokeLater(() -> {
-                // Repaint all instances of ImagePanel and its parent container
-                for (Window window : Window.getWindows()) {
-                    for (Component comp : window.getComponents()) {
-                        if (comp instanceof ImagePanel) {
-                            comp.revalidate(); // Revalidate to ensure layout is updated
-                            comp.repaint();    // Repaint to update the image
-                            if (comp.getParent() != null) {
-                                comp.getParent().revalidate(); // Ensure the parent container is updated
-                                comp.getParent().repaint();    // Repaint the parent as well
-                            }
-                        }
-                    }
-                }
-            });
+            setPreferredSize(null);
+            revalidate();
+            repaint();
         } catch (Exception e) {
             e.printStackTrace();
         }
