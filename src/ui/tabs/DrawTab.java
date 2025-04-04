@@ -29,7 +29,13 @@ public class DrawTab extends AbstractCreateTab {
         ImagePanel imagePanel = new ImagePanel();
 
         imagePanel.setPreferredSize(new Dimension(400, 380));
-        drawPanel.add(imagePanel, BorderLayout.NORTH);
+
+        // Wrap the imagePanel in a padded container
+        JPanel imageWrapper = new JPanel(new BorderLayout());
+        imageWrapper.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
+        imageWrapper.add(imagePanel, BorderLayout.CENTER);
+
+        drawPanel.add(imageWrapper, BorderLayout.NORTH);
 
         // Add main content panel
         drawPanel.add(new DrawContentPanel(imagePanel, modelDropdown, userPromptArea, sizeField, 

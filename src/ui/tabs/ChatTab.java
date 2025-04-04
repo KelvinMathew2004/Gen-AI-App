@@ -31,7 +31,13 @@ public class ChatTab extends AbstractCreateTab {
         // Add image panel at the top
         JPanel imagePanel = new ImagePanel();
         imagePanel.setPreferredSize(new Dimension(400, 380));
-        chatPanel.add(imagePanel, BorderLayout.NORTH);
+
+        // Wrap the imagePanel in a padded container
+        JPanel imageWrapper = new JPanel(new BorderLayout());
+        imageWrapper.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
+        imageWrapper.add(imagePanel, BorderLayout.CENTER);
+
+        chatPanel.add(imageWrapper, BorderLayout.NORTH);
 
         // Add main content panel
         chatPanel.add(new ChatContentPanel(modelField, maxTokensField, systemPersonalityArea, userPromptArea,
